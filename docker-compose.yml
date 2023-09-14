@@ -1,5 +1,19 @@
 
 services: 
+
+  psdb:
+    container_name: psqldb
+    image: postgres:alpine
+    restart: always
+    environment:
+      - POSTGRES_USER=${DB_USER}
+      - POSTGRES_PASSWORD=${DB_PASSWORD}
+      - POSTGRES_DB=${DB_NAME}
+    ports: 
+      - "5432:5432"
+    volumes:
+      - psqldb:/var/lib/postgresql/data
+
   mongo: 
     container_name: mongodb
     restart: unless-stopped
