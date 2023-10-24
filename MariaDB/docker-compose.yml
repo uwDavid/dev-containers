@@ -1,0 +1,13 @@
+
+services: 
+  mariadb:
+    container_name: mariadb
+    image: mariadb
+    restart: always
+    environment:
+      - MARIADB_ROOT_PASSWORD=secret
+    ports: 
+      - "3306:3306"
+    volumes:
+      - /home/purple/0Projects/dock-vol/maria/data:/var/lib/mysql
+
