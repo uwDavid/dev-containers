@@ -1,0 +1,26 @@
+
+# docker exec -it psdb_test bash
+# connection string
+# postgres://root:secret@localhost:5432/testdb?sslmode=disable
+services: 
+  mysqldb_test:
+    container_name: mysqldb_test
+    image: mysql:8.3.0
+    restart: always
+    environment:
+      - MYSQL_ROOT_PASSWORD=secret
+    ports: 
+      - "5432:5432"
+    volumes:
+      - mysqldb_test:/var/lib/mysql
+          
+  adminer: 
+    container_name: adminer
+    image: adminer
+    restart: always
+    ports: 
+      - 8080:8080
+
+volumes: 
+  mysqldb_test:
+#  psql_data_live:
